@@ -52,7 +52,7 @@ class OrderPlaceAfter implements ObserverInterface
                 $customer->setPassword($password);
                 $customer->save();
 
-                if ($customer->getCustomerId()) {
+                if ($customer->getId()) {
                     $address = $this->addressFactory->create();
                     $address->setCustomerId($customer->getId());
                     $address->setFirstname($shippingAddress->getFirstname());
@@ -65,10 +65,10 @@ class OrderPlaceAfter implements ObserverInterface
                     $address->setIsDefaultBilling(true);
                     $address->setIsDefaultShipping(true);
                     $address->save();
+                    $order->setCustomerId($customer->getId());
                 }
             }
 
-            $order->setCustomerId($customer->getId());
             $order->save();
         }
     }
