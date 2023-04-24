@@ -203,11 +203,13 @@ define([
                                 )
                                     .html(
                                         $(".page-title span").text() +
-                                            "<span> has been added to cart.</span>"
+                                            "<span> is already in the cart.</span>"
                                     )
                                     .modal({
                                         modalClass: "add-to-cart-popup",
-                                        title: $.mage.__("Popup Title"),
+                                        title: $.mage.__(
+                                            "Not allow multi product"
+                                        ),
                                         buttons: [
                                             {
                                                 text: "Clear cart",
