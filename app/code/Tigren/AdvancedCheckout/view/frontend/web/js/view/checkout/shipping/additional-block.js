@@ -40,7 +40,12 @@ define(["ko", "jquery", "uiComponent", "mage/url"], function (
             }).done(function (data) {
                 const jsonArray = JSON.parse(data);
                 for (const key in jsonArray) {
-                    dateOffs.push(jsonArray[key].date);
+                    var jsonDate = new Date(jsonArray[key].date);
+                    var formattedJsonDate = jsonDate
+                        .toISOString()
+                        .substring(0, 10);
+
+                    dateOffs.push(formattedJsonDate);
                 }
             });
             var deliveryTimeLink = url.build("rest/V1/checktime/deliverytime");
@@ -63,10 +68,6 @@ define(["ko", "jquery", "uiComponent", "mage/url"], function (
 
             this.weekdays = deliveryTimes;
 
-            if (new Date().getDay() === 0) {
-                console.log("sunday");
-            }
-
             this.test = ko.observable();
             this.invalidDate = ko.observable("");
 
@@ -80,7 +81,8 @@ define(["ko", "jquery", "uiComponent", "mage/url"], function (
                         ko.utils.arrayFilter(dayOffs, function (day) {
                             return day === selectedDay;
                         }).length > 0;
-                    if (isDayIncluded) {
+                    var isDateInArray = $.inArray(value, dateOffs) !== -1;
+                    if (isDayIncluded || isDateInArray) {
                         date = "";
                         $("#erorr").text(
                             "Sorry, the store is closed on the selected date!"
