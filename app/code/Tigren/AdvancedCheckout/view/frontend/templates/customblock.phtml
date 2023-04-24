@@ -1,0 +1,57 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright  Copyright (c)  2023.  Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+?>
+
+<script type="text/javascript">
+
+    require([
+        'jquery',
+        'jquery/jquery.cookie',
+        'Magento_Ui/js/modal/alert',
+        'Magento_Ui/js/modal/confirm',
+        'jquery/ui'
+    ], function ($, alert, confirmation) {
+
+        'use strict';
+        var flag = false;
+
+        $(document).ready(function () {
+            if (!flag) {
+                var myInterval = setInterval(function () {
+                    customConfirmation();
+                    $.removeCookie('redirect_triggered');
+                }, 3000);
+            }
+            setInterval(function () {
+                if (flag) {
+                    clearInterval(myInterval);
+                }
+            }, 1000);
+            $.removeCookie('redirect_triggered');
+        });
+
+        function customConfirmation() {
+            if ($.cookie('redirect_triggered') === '1') {
+                flag = true;
+                confirmation({
+                    title: $.mage.__(
+                        'You have an order that is not complete. Please wait to complete the order before creating a new order.'),
+                    buttons: [
+                        {
+                            text: $.mage.__('Close'),
+                            class: 'action new',
+                            click: function (event) {
+                                this.closeModal(event);
+                            }
+                        }
+                    ]
+                });
+            }
+        }
+    });
+
+</script>

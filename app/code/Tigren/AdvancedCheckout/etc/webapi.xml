@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../app/code/Magento/Webapi/etc/webapi.xsd">
+    <route url="/V1/carts/clear" method="POST">
+        <service class="Tigren\AdvancedCheckout\Api\ClearCartInterface" method="clearCart" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route method="GET" url="/V1/custom/custom-api/check">
+        <service class="Tigren\AdvancedCheckout\Api\CheckMultiOrderInterface" method="checkMultiOrder" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/login" method="POST">
+        <service class="Tigren\AdvancedCheckout\Api\LoginInterface" method="login" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/orders/check" method="GET">
+        <service class="Tigren\AdvancedCheckout\Api\CheckOrdersInterface" method="hasNoCompleteOrder" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/checktime/dayoff" method="GET">
+        <service class="Tigren\AdvancedCheckout\Api\CheckTimeInterface" method="dayOff" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/checktime/dateoff" method="GET">
+        <service class="Tigren\AdvancedCheckout\Api\CheckTimeInterface" method="dateOff" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/checktime/deliverytime" method="GET">
+        <service class="Tigren\AdvancedCheckout\Api\CheckTimeInterface" method="deliveryTime" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>

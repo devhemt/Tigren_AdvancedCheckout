@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tigren\AdvancedCheckout\Api\CheckMultiOrderInterface" type="Tigren\AdvancedCheckout\Model\CheckMultiOrder" />
+    <preference for="Tigren\AdvancedCheckout\Api\ClearCartInterface" type="Tigren\AdvancedCheckout\Model\ClearCart" />
+    <preference for="Tigren\AdvancedCheckout\Api\LoginInterface" type="Tigren\AdvancedCheckout\Model\Login" />
+    <preference for="Tigren\AdvancedCheckout\Api\CheckOrdersInterface" type="Tigren\AdvancedCheckout\Model\CheckOrders" />
+    <preference for="Tigren\AdvancedCheckout\Api\CheckTimeInterface" type="Tigren\AdvancedCheckout\Model\CheckTime" />
+</config>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Tigren" translate="label" sortOrder="10">
+            <label>Tigren</label>
+        </tab>
+        <section id="Tigren_AdvancedCheckout" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Advanced Checkout</label>
+            <tab>Tigren</tab>
+            <resource>Tigren_AdvancedCheckout::AdvancedCheckout_configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enabledisable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable/Disable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="day_off" translate="label" type="multiselect" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Day off</label>
+                    <source_model>Magento\Config\Model\Config\Source\Locale\Weekdays</source_model>
+                    <validate>validate-select</validate>
+                </field>
+                <field id="date_off" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Date off</label>
+                    <frontend_model>Tigren\AdvancedCheckout\Block\System\Config\Form\Field\DatePicker</frontend_model>
+                    <backend_model>Tigren\AdvancedCheckout\Model\Config\DatePicker</backend_model>
+                </field>
+                <field id="delivery_time" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Delivery time</label>
+                    <frontend_model>Tigren\AdvancedCheckout\Block\System\Config\Form\Field\TimePicker</frontend_model>
+                    <backend_model>Tigren\AdvancedCheckout\Model\Config\TimePicker</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

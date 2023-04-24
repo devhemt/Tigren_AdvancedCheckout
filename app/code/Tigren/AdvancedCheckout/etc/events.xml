@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_before">
+        <observer name="Tigren_AdvancedCheckout_sales_order_place_before" instance="Tigren\AdvancedCheckout\Observer\Sales\OrderPlaceBefore" />
+    </event>
+    <event name="sales_order_place_after">
+        <observer name="Tigren_AdvancedCheckout_create_account" instance="Tigren\AdvancedCheckout\Observer\CreateAcount\OrderPlaceAfter" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="Tigren_AdvancedCheckout_order_place_before_action" instance="Tigren\AdvancedCheckout\Observer\PlaceOrder" />
+    </event>
+</config>
